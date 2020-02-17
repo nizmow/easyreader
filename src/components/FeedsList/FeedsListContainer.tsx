@@ -4,7 +4,7 @@ import { FeedsList } from './FeedsList'
 import { fetchRequest } from '../../store/feeds/actions';
 
 const mapStateToProps = (state: ApplicationState) => ({
-    feeds: state.feeds.data,
+    feeds: state.feeds,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({

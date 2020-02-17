@@ -19,7 +19,6 @@ function getFeeds(): Promise<Feed[]> {
      })
      .then(statusHelper)
      .then(response => response.json())
-     .catch(error => error)
      .then((data: FeedsResponse) => {
          console.log(data);
          return data.feeds;

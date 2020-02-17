@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Feed } from '../../store/feeds/types';
+import { Feed, FeedsState } from '../../store/feeds/types';
 
 interface Props {
-    feeds: Feed[];
+    feeds: FeedsState;
     onComponentDidMount: () => void;
 }
 
@@ -16,12 +16,20 @@ export const FeedsList: React.FC<Props> = props => {
     
     return (
         <>
-            <h5>Feeds!</h5>
-            <ul>
-                {props.feeds.map(currentFeed => (
-                    <li key={currentFeed.id}>{currentFeed.title}</li>
-                ))}
-            </ul>
+            <h3>Feeds!</h3>
+            {props.feeds.data.length > 0 &&
+                <ul>
+                    {props.feeds.data.map(currentFeed => (
+                        <li key={currentFeed.id}>{currentFeed.title}</li>
+                    ))}
+                </ul>
+            }
+            {props.feeds.loading && 
+                <span>Loading...</span>
+            }
+            {props.feeds.errors && 
+                <span>Error loading feeds!</span>
+            }
         </>
     );
 };
