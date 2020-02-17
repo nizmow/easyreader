@@ -1,0 +1,17 @@
+.appContainer {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    box-sizing: border-box;
+  }
+  
+  .appContent {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .appSidebar {
+    overflow-y: auto;
+    width:100px;
+  }
+  
