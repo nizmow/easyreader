@@ -1,6 +1,5 @@
 import { Reducer } from 'redux';
 import { FeedsState, FeedActionTypes } from './types';
-import { Feed } from 'semantic-ui-react';
 
 const initialState: FeedsState = {
     data: [],
