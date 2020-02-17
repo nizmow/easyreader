@@ -23,5 +23,5 @@ export enum FeedActionTypes {
 export interface FeedsState {
     readonly loading: boolean;
     readonly data: Feed[];
-    readonly errors?: string;
+    readonly error?: string;
 }

@@ -3,7 +3,7 @@ import { FeedsState, FeedActionTypes } from './types';
 
 const initialState: FeedsState = {
     data: [],
-    errors: undefined,
+    error: undefined,
     loading: false,
 }
 
@@ -14,7 +14,7 @@ const reducer: Reducer<FeedsState> = (state: FeedsState = initialState, action) 
         case FeedActionTypes.FETCH_SUCCESS:
             return {...state, loading: false, data: action.payload}
         case FeedActionTypes.FETCH_ERROR:
-            return {...state, loading: false, errors: action.payload}
+            return {...state, loading: false, error: action.payload}
         default:
             return state;
     }

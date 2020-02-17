@@ -8,7 +8,7 @@ function* handleFetch() {
         const result = yield call(getFeeds);
         yield put(fetchSuccess(result))
     } catch (error) {
-        yield put(fetchError(error));
+        yield put(fetchError(error.message));
     }
 }
 

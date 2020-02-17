@@ -7,28 +7,27 @@ interface Props {
 }
 
 export const FeedsList: React.FC<Props> = props => {
+    const {data: feeds, loading, error} = props.feeds;
+
     React.useEffect(() => {
-        // we should do this in the coutainer, but either way
-        // simulate componentDidMount by passing a constant to useEffect
-        console.log("Mounting!");
         props.onComponentDidMount();
-    }, [true])
+    }, [])
     
     return (
         <>
             <h3>Feeds!</h3>
-            {props.feeds.data.length > 0 &&
+            {feeds.length > 0 &&
                 <ul>
-                    {props.feeds.data.map(currentFeed => (
+                    {feeds.map(currentFeed => (
                         <li key={currentFeed.id}>{currentFeed.title}</li>
                     ))}
                 </ul>
             }
-            {props.feeds.loading && 
+            {loading && 
                 <span>Loading...</span>
             }
-            {props.feeds.errors && 
-                <span>Error loading feeds!</span>
+            {error && 
+                <span>Error loading feeds! {error}</span>
             }
         </>
     );
