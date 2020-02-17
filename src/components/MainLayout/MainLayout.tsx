@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import styles from './MainLayout.module.scss';
+import { FeedsListContainer } from '../FeedsList/FeedsListContainer';
 
 export default class MainLayout extends React.Component {
     render() {
@@ -8,6 +9,7 @@ export default class MainLayout extends React.Component {
             <div className={styles.appContainer}>
                 <div className={styles.appSidebar}>
                     <h1>This is the sidebar</h1>
+                    <FeedsListContainer />
                 </div>
                 <div className={styles.appContent}>
                     <p>This is a lot of scrollable content!</p>

@@ -1,14 +1,19 @@
 import { all, call, fork, put, takeEvery, take, select } from 'redux-saga/effects';
 import { FeedActionTypes } from './types';
 import { fetchError, fetchSuccess } from './actions';
+import getFeeds from '../../api/feeds';
 
-function* logFetch() {
-    const action = yield select();
-    console.log(action);
+function* handleFetch() {
+    try {
+        const result = yield call(getFeeds);
+        yield put(fetchSuccess(result))
+    } catch (error) {
+        yield put(fetchError(error));
+    }
 }
 
 function* watchFetchRequest() {
-    yield takeEvery(FeedActionTypes.FETCH_REQUEST, logFetch);
+    yield takeEvery(FeedActionTypes.FETCH_REQUEST, handleFetch);
 }
 
 export function* feedsSaga() {
