@@ -4,6 +4,7 @@ import { Feed, FeedsState } from '../../store/feeds/types';
 interface Props {
     feeds: FeedsState;
     onComponentDidMount: () => void;
+    onFeedSelected: (id: number) => void;
 }
 
 export const FeedsList: React.FC<Props> = props => {
@@ -12,6 +13,10 @@ export const FeedsList: React.FC<Props> = props => {
     React.useEffect(() => {
         props.onComponentDidMount();
     }, [])
+
+    const handleFeedSelected = (id: number) => {
+        props.onFeedSelected(id);
+    }
     
     return (
         <>
@@ -19,7 +24,9 @@ export const FeedsList: React.FC<Props> = props => {
             {feeds.length > 0 &&
                 <ul>
                     {feeds.map(currentFeed => (
-                        <li key={currentFeed.id}>{currentFeed.title}</li>
+                        <li key={currentFeed.id} onClick={() => handleFeedSelected(currentFeed.id)}>
+                            {currentFeed.title}
+                        </li>
                     ))}
                 </ul>
             }

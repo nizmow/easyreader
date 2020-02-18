@@ -1,11 +1,11 @@
 import { all, call, fork, put, takeEvery, take, select } from 'redux-saga/effects';
-import { FeedActionTypes } from './types';
+import { FeedsActionTypes } from './types';
 import { fetchError, fetchSuccess } from './actions';
-import getFeeds from '../../api/feeds';
+import NextcloudNewsApi from '../../api/nextcloudNews';
 
 function* handleFetch() {
     try {
-        const result = yield call(getFeeds);
+        const result = yield call(NextcloudNewsApi.getFeeds);
         yield put(fetchSuccess(result))
     } catch (error) {
         yield put(fetchError(error.message));
@@ -13,7 +13,7 @@ function* handleFetch() {
 }
 
 function* watchFetchRequest() {
-    yield takeEvery(FeedActionTypes.FETCH_REQUEST, handleFetch);
+    yield takeEvery(FeedsActionTypes.FETCH_REQUEST, handleFetch);
 }
 
 export function* feedsSaga() {

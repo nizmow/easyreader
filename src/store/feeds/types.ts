@@ -13,7 +13,7 @@ export interface Feed {
     lastUpdateError: string;
 }
 
-export enum FeedActionTypes {
+export enum FeedsActionTypes {
     FETCH_REQUEST = '@@feeds/FETCH_REQUEST',
     FETCH_SUCCESS = '@@feeds/FETCH_SUCCESS',
     FETCH_ERROR = '@@feeds/FETCH_ERROR',
@@ -24,4 +24,5 @@ export interface FeedsState {
     readonly loading: boolean;
     readonly data: Feed[];
     readonly error?: string;
+    readonly selected?: number;
 }

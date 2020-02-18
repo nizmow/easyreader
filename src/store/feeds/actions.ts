@@ -1,6 +1,7 @@
 import { action } from 'typesafe-actions';
-import { FeedActionTypes, Feed } from './types';
+import { FeedsActionTypes, Feed } from './types';
 
-export const fetchRequest = () => action(FeedActionTypes.FETCH_REQUEST);
-export const fetchSuccess = (data: Feed[]) => action(FeedActionTypes.FETCH_SUCCESS, data);
-export const fetchError = (message: string) => action(FeedActionTypes.FETCH_ERROR, message);
+export const fetchRequest = () => action(FeedsActionTypes.FETCH_REQUEST);
+export const fetchSuccess = (data: Feed[]) => action(FeedsActionTypes.FETCH_SUCCESS, data);
+export const fetchError = (message: string) => action(FeedsActionTypes.FETCH_ERROR, message);
+export const selected = (id: number) => action(FeedsActionTypes.SELECTED, id);
